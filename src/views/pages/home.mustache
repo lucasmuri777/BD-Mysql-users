@@ -1,0 +1,35 @@
+{{>partials/header}}
+
+<fieldset>
+    <legend>Novo Usuario</legend>
+    <form method="POST" action="/novousuario">
+        <input type="text" name="name" placeholder="Digite um nome"/><br/><br/>
+        <input type="number" name="age" placeholder="Digite uma idade"/><br/><br/>
+        <input type="submit" value="Inserir Usuário"/><br/><br/>
+    </form>
+</fieldset>
+
+<hr/>
+<h2>Usuarios do banco de dados</h2>
+<form method="GET" action="/search">
+    <input type="text" name="search" placeholder="Digite um nome" value="{{searchName}}" /><br/><br/>
+</form>
+<ul style="list-style: none; display: flex; flex-wrap:wrap;flex-direction: column">
+    {{#users}}
+        <li style="display:flex; margin: 10px 0; align-items: center">
+       
+        <strong>BD ID: {{id}} </strong> - {{name}} - Idade {{age}}
+        <a style="margin: 0 5px;text-decoration:none;color:white; background-color:red; padding: 5px 10px" href="/destroy/{{id}}">X</a>
+        <a style="margin: 0 5px;text-decoration:none;color:white; background-color:green; padding: 5px 10px" href="/edit/{{id}}">EDIT</a>
+        
+        </li>
+    {{/users}}
+    {{^users}}
+        <li>Nenhum usuário encontrado</li>
+    {{/users}}
+</ul>
+{{#editOn}}
+    {{>partials/edit}}
+{{/editOn}}
+
+{{>partials/footer}}

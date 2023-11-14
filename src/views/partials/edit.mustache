@@ -1,0 +1,11 @@
+<fieldset>
+    <legend>Editando o: <strong>ID: {{id}} - Nome: {{name}} - Idade: {{age}}</strong></legend>
+    <form method="POST" action="/edituser">
+        
+        <input type="text" name="name" placeholder="Novo nome" value="{{name}}"/><br/><br/>
+        <input type="number" name="age" placeholder="Nova idade" value="{{age}}"/><br/><br/>
+        <input type="hidden" name="id" value="{{id}}"/>
+        <input type="submit" value="Alterar Usuário"/><br/><br/>
+        <a href="/">Cancelar</a>
+    </form>
+</fieldset>
